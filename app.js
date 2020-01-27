@@ -12,7 +12,7 @@ app.use((req, res) => {
 });
 
 const init = async () => {
-  await db.sync({ force: true });
+  await db.sync(); // { force: true } will drop my tables if they exist WHICH MEANS all of my existing data disappears. Please remember to remove this after using it
   console.log('db is synced');
   app.listen(PORT, () => { console.log(`Listening on PORT ${PORT}`)});
 }

@@ -8,7 +8,11 @@ router.get('/', async (req, res, next) => {
         { model: Pet, as: 'pets' }
       ]
     })
-    res.json(people);
+
+    const ginny = await MagicHuman.findByPk(3);
+    const pets = await ginny.getPets();
+
+    res.json(pets);
   } catch (e) {
     next(e);
   }
